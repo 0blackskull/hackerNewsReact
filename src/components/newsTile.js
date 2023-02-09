@@ -20,6 +20,7 @@ const Tile = () => {
       setStories(storiesData.data.hits);
       setMaxPages(storiesData.data.nbPages);
       setIsLoading(false);
+    // console.log(stories);
     });
   };
 
@@ -32,9 +33,11 @@ const Tile = () => {
     }
   }, []);
 
-  const displayStories = stories.map((story) => (
+  // var index = 2;
+
+  const displayStories = stories.map((story, index) => (
     <div>
-      <NewsSection data={story} />
+      <NewsSection data={story} index = {index+1}/>
     </div>
   ));
   console.log(stories.id)
@@ -44,6 +47,7 @@ const Tile = () => {
       <div className="SortedStories">
         {!isLoading && displayStories}
       </div>
+      <button>More</button>
     </div>
   );
 };
