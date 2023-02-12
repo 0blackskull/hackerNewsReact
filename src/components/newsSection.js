@@ -10,31 +10,17 @@ const NewsSection = ({ data, index }) => {
   const handleClick = () => {
    setShow(false);
  };
-  // var s2 = data?.url?.substring(7);
 
-  // useEffect(() => {
-
-  // }, [])
 
   const shorturl = (urlLong) => {
-    var url = urlLong;
-    var len = url?.length;
-    var s = "";
-    for (var i = 0; i < len; i++) {
-      if (url[i] === '.') {
-          while (url[i+1] !== '/') {
-              i++;
-              s += url[i];
-          }
-          break;
-      }
-    }
-    return s;
+    let url = urlLong;
+    let domain = url ? (new URL(url)) : "";
+    let ret = domain.hostname;
+    ret = "" + ret?.replace("www.", "");
+    console.log(ret);
+    let a= ret?.toString();
+    return a;
   }
-
-  // useEffect(() => {
-  //   sets2(shorturl(data?.url));
-  // }, [])
 
   return (
    show &&(

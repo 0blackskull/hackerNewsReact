@@ -1,6 +1,7 @@
 import NewsSection from "./newsSection";
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
+import Footer from "./footer";
 
 
 const Tile = () => {
@@ -13,14 +14,13 @@ const Tile = () => {
       `http://hn.algolia.com/api/v1/search_by_date?tags=story&page=${page}&hitsPerPage=${30}`
     );
   }
-  const handlePageChange = (event, value) => {
-    setPage(value);
+  const handlePageChange = ( value) => {
+    setPage(value+1);
     setIsLoading(true);
     getSortedStories(value - 1).then((storiesData) => {
       setStories(storiesData.data.hits);
       setMaxPages(storiesData.data.nbPages);
       setIsLoading(false);
-    // console.log(stories);
     });
   };
 
@@ -40,15 +40,14 @@ const Tile = () => {
       <NewsSection data={story} index = {index+1}/>
     </div>
   ));
-  console.log(stories.id)
   return (
-    <div>
+    <><div>
       {/* {isLoading && <Typography sx={{ margin: '17.5rem' }} variant="h4" component="div"> Loading ....</Typography>} */}
       <div className="SortedStories">
         {!isLoading && displayStories}
       </div>
-      <button>More</button>
-    </div>
+      <button className="cursor-pointer" >More</button>
+    </div><Footer /></>
   );
 };
 

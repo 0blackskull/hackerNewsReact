@@ -1,17 +1,23 @@
 import Topbar from "./components/topbar";
 import Footer from "./components/footer";
 import Tile from "./components/newsTile";
+import Search from "./search";
+import {
+  Routes, Route, Navigate,
+} from 'react-router-dom';
 
-// topbar (Condition : changes to the one with filters after first search)
-// 30 times newsTile
-// footer (has a search that disappears after first search)
+
 
 function App() {
   return (
     <div>
       <Topbar />
-      <Tile />
-      <Footer />
+      <Routes>
+        <Route path="/stories" element={<Tile />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/" element={<Navigate to="/stories" replace />} />
+      </Routes>
+  
     </div>);
 }
 
