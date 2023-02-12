@@ -1,9 +1,7 @@
-// import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
-  // let router = useRouter();
   const navigate = useNavigate();
   const [searchVal, setSearchVal] = useState("");
   const handleChange = (e) => {
@@ -16,9 +14,9 @@ const Footer = () => {
   };
 
   return (
-    <div>
-      <div className="flex flex-row">
-        <div className="cursor-pointer">Guidelines | </div>
+    <div className="grid  place-items-center">
+      <div className="flex flex-row text-[8pt] space-x-1.5">
+        <div className="cursor-pointer">Guidelines  | </div>
         <div className="cursor-pointer">FAQ | </div>
         <div className="cursor-pointer">Lists | </div>
         <div className="cursor-pointer">API | </div>
@@ -27,19 +25,13 @@ const Footer = () => {
         <div className="cursor-pointer">Apply to YC | </div>
         <div className="cursor-pointer">Contact | </div>
       </div>
-      SEARCH
+      <div className="flex flex-row text-[13px]">
+      Search : 
       <input
         type="text"
         value={searchVal}
+        className="border border-black ml-1 h-[18px] mt-1 mb-2"
         onChange={handleChange}
-        //   onKeyPress={(e) => {
-        //     if (e.key === "Enter") {
-        //         this.setState({ message: e.target.value },
-        //         () => {
-        //             alert(this.state.message);
-        //         });
-        //     }
-        // }}
         onKeyUp={(e) => {
           if (e.key === "Enter") {
             {
@@ -48,6 +40,7 @@ const Footer = () => {
           }
         }}
       />
+      </div>
     </div>
   );
 };

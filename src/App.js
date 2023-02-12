@@ -1,4 +1,3 @@
-import Topbar from "./components/topbar";
 import Footer from "./components/footer";
 import Tile from "./components/newsTile";
 import Search from "./search";
@@ -11,11 +10,11 @@ import {
 function App() {
   return (
     <div>
-      <Topbar />
+     
       <Routes>
-        <Route path="/stories" element={<Tile />} />
+        <Route path="/" element={<Tile />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/" element={<Navigate to="/stories" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
   
     </div>);
