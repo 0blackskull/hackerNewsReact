@@ -1,12 +1,12 @@
 import { React, useState } from "react";
 import settings from "../setting.png"
-const Topbar = () => {
+const Topbar = ({handleSelectquery}) => {
   const [searchVal, setsearchVal] = useState("");
 
   const handleChange = (e) => {
     e.preventDefault();
     setsearchVal(e.target.value);
-    // console.log(searchVal);
+    handleSelectquery(e.target.value);
     localStorage.setItem("search", e.target.value);
   };
 
@@ -24,7 +24,7 @@ const Topbar = () => {
         <a className="pt-2 space-x-2"> Hacker News</a>
       </span>
 
-      <div className="flex flex-row w-4/5">
+      <div className="flex flex-row w-[80%]">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -53,7 +53,7 @@ const Topbar = () => {
         src={settings}
         width="20"
         height="58"
-        className="bg-[#FF742B] ml-[-2.5rem] mt-1.5"
+        className="bg-[#FF742B] ml-[-2rem] mt-1.5"
       ></img>
       <a className="ml-2 text-[18px] font-semibold">Settings</a>
     </div>

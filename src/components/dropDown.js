@@ -12,9 +12,9 @@ const Dropdown = ({ handleSelect, values, filter, label, defaultValue }) => {
   //    handleSelect(selectedVal);
   //  }, [selectedVal]);
   return (
-    <div className="relative ml-2 ">
+    <div className=" ml-2 ">
       <button
-        className="bg-white  border border-gray-400 p-2 flex flex-row mb-2"
+        className="bg-white pl-1 border text-[#5c5c5c] border-[#c3c3c3] border-solid text-right flex flex-row  "
         onClick={() => setIsOpen(!isOpen)}
       >
         {selectedVal}
@@ -35,10 +35,10 @@ const Dropdown = ({ handleSelect, values, filter, label, defaultValue }) => {
         </svg>
       </button>
       {isOpen && (
-        <div className="absolute bg-white rounded border border-gray-400">
+        <div className=" bg-white rounded border border-gray-400 ">
           <ul className="list-reset" onClick={handleChange} label={filter}>
             {values.map((valueTemp) => (
-              <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-500 hover:text-white">
+              <li className="block px-4 mt-2 text-sm text-gray-700 hover:bg-indigo-500 hover:text-white text-[14px]">
                 {valueTemp}
               </li>
             ))}

@@ -7,7 +7,7 @@ const Search = () => {
 
   const [dateRange, setdateRange] = useState("all");
   const [page, setpage] = useState("0");
-  const [query, setquery] = useState("all"); // query is the search eneterd by user
+  const [query,setQuery] = useState(localStorage.getItem("search"))
   const [sort, setsort] = useState("byPopularity");
   const [type, settype] = useState("all"); // tags in api docs  
 
@@ -28,6 +28,9 @@ const Search = () => {
       settype("comment");
     }
   };
+  const handleSelectquery= (value) => {
+    setQuery(value);
+  }
   const handleSelectTime = (value) => {
     if (value === "All time") setdateRange("all");
     if (value === "Last 24h") setdateRange("last24h");
@@ -44,13 +47,15 @@ const Search = () => {
     else 
       setsort("byDate");
   };
+
   return (
+    <div className="bg-black">
     <div className="w-[86%] items-center ml-[7%] bg-[#F6F6EF]">
 
-    <TopbarSearch />
+    <TopbarSearch handleSelectquery={handleSelectquery} />
 
-    <div className="flex flex-row ml-2">
-      <div className="flex flex-row">
+    <div className="flex flex-row ml-2 mb-3">
+      <div className="ml-3 flex flex-row text-[13px] mt-3">
         Search
         <Dropdown
           handleSelect={handleSelectType}
@@ -60,7 +65,7 @@ const Search = () => {
           defaultValue={filterValues[0][0]}
         />
       </div>
-      <div className="ml-2 flex flex-row">
+      <div className="ml-2 flex flex-row text-[13px] mt-3">
         by
         <Dropdown
           handleSelect={handleSelectSort}
@@ -70,7 +75,7 @@ const Search = () => {
           defaultValue={filterValues[1][0]}
         />
       </div>
-      <div className="ml-2 flex flex-row">
+      <div className="ml-2 flex flex-row text-[13px] mt-3">
         for
         <Dropdown
           handleSelect={handleSelectTime}
@@ -85,11 +90,12 @@ const Search = () => {
     <NewsTileSearch  
         dateRange = {dateRange} 
         page = {page}
-        query = {localStorage.getItem('search')}
+        query = {query}
         sort = {sort} 
         type = {type}
     />
 
+    </div>
     </div>
   );
 };
